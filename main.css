@@ -77,7 +77,7 @@ main{
     margin-top: 100px;
     padding:50px 30px; 
     border-radius:8px;
-    background-color: lightgreen;
+    --color-primary: #009579;
     box-shadow:0px 3px 6px rgba(0,0,0,0.1) ;
 }
 
@@ -155,3 +155,29 @@ search .search_box .btn .input {
 
    
 }
+
+/* Menue for brackets */
+#list_location {
+    text-align: center;
+    display:inline;
+    width: auto;
+    height:auto;
+
+  }
+  
+#list_location a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+  
+#list_location a:hover {
+    background-color:orange;
+  }
+  
+#list_location a.active {
+    background-color: #04AA6D;
+    color: white;
+  }

@@ -1,34 +1,49 @@
-window.onload = () => {
-    const tab_switchers = document.querySelectorAll('[data-switcher]');
+import ExternalServices from './external_services.js'
 
-    for (let i = 0; i < tab_switchers.length; i++){
-        const tab_switcher = tab_switchers[i];
-        const page_id = tab_switcher.dataset.tab;
+const Api_services = new ExternalServices;
 
-        tab_switcher.addEventListener('click', () =>{
-            document.querySelector('.tabs .tab.is-active').classList.remove('is-active');
-            tab_switcher.parentNode.classList.add('is-active');
+
+function renderBracketList(brackets) {
+
+    const list_element = document.getElementById("list_location");
+
+    brackets.forEach((bracket) =>{
+        
+        //   const list = document.createElement('ul');
+        const one = document.createElement('li');
+        one.innerHTML= `<a href = " bracket.html?id=${bracket._id}">${bracket.title}</a>`
+
+
+        
+       
+         
+        list_element.appendChild(one);
             
-            SwitchPage(page_id);
-
-
+                 
             
+        
+    
+    
+    });
+    // bracket.html?id=[bracketid]
+}
 
 
+async function init() {
+    const brackets = await Api_services.getBrackets();
+    console.log(brackets);
+    renderBracketList(brackets);
 
-        });           
+ 
+
+
+}
+
+    // data.brackets.forEach((brackets) => {
+    
+    
         
 
-    }
 
 
-
-}
-
-function SwitchPage(page_id){
-    const current_page = document.querySelector('.pages .page.is-active');
-    current_page.classList.remove('is-active');
-
-    const next_page = document.querySelector(`.pages .page[data-page= "${page_id}"]`);
-    next_page.classList.add('is-active');
-}
+init();
